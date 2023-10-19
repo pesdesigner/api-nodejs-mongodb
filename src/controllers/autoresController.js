@@ -1,13 +1,16 @@
 import { autores } from "../models/index.js";
-import NaoEncontrado from "../controllers/erros/NaoEncontrado.js";
+import NaoEncontrado from "../erros/NaoEncontrado.js";
 
 class AutorController {
 
-  static listarAutores = async (req, res) => {
+  static listarAutores = async (req, res, next) => {
     try {
-      const autoresResultado = await autores.find();
+      const autoresResultado = autores.find();
 
-      res.status(200).json(autoresResultado);
+      req.resultado = autoresResultado;
+
+      next();
+
     } catch (error) {
       res.status(500).json({message: "Erro interno do servidor"});
     }
