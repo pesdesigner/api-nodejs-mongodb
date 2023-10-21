@@ -17,3 +17,7 @@ const autorSchema = new mongoose.Schema(
 const autores = mongoose.model("autores", autorSchema);
 
 export default autores;
+
+// O versionKey é uma propriedade definida em cada documento quando criado pela primeira vez pelo Mongoose.
+// Este valor de chave contém a revisão interna do documento. A opção versionKey é uma string que representa o caminho a ser usado para controle de versão.
+// O padrão é __v.
